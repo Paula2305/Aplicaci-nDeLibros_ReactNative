@@ -1,17 +1,21 @@
 export class Libro {
     id: number;
-    nombre: string;
+    titulo: string;
     autor: string;
-    paginas: number;
     ISBN: string;
     precio: number;
+    genero: string;
+    sinopsis: string;
+    url_foto: string;
 
-    constructor(id: number, nombre: string, autor: string, paginas: number, ISBN: string, precio: number) {
+    constructor(id: number, titulo: string, autor: string, ISBN: string, precio: number, genero: string, sinopsis: string, url_foto: string) {
         this.id = id;
-        this.nombre = nombre;
+        this.titulo = titulo;
         this.autor = autor;
-        this.paginas = paginas;
         this.ISBN = ISBN;
         this.precio = precio;
+        this.genero = genero;
+        this.sinopsis = sinopsis;
+        this.url_foto = url_foto;
     }
 }

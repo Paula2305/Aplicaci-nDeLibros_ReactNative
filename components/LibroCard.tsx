@@ -2,7 +2,7 @@ import { Box, Text, HStack } from 'native-base';
 import {Libro} from '../model/libro_model';
 
 
-const LibroCard = ({ libro }) => {
+const LibroCard = ({libro}) => {
     return (
         <Box
             bg={'white'}
@@ -17,7 +17,7 @@ const LibroCard = ({ libro }) => {
             <HStack space={2} alignItems={'center'}>
                 <Box>
                     <Text fontSize='md' fontWeight='bold' mb={2}>
-                        {libro.nombre}
+                        {libro.titulo}
                     </Text>
                     <Text fontSize='sm' color='gray.500'>
                         Autor: {libro.autor}

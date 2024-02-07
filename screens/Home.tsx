@@ -6,18 +6,18 @@ import {Libro} from '../model/libro_model';
 import LibroCard from "../components/LibroCard";
 
 const Home = () => {
-    const book_list = [new Libro(1, 'Libro 1', 'Autor 1', 300, 'ISBN-001', 29.99),
-        new Libro(2, 'Libro 2', 'Autor 2', 450, 'ISBN-002', 39.99),
-        new Libro(3, 'Libro 3', 'Autor 3', 200, 'ISBN-003', 19.99),
-        new Libro(4, 'Libro 4', 'Autor 4', 350, 'ISBN-004', 49.99),
-        new Libro(5, 'Libro 5', 'Autor 5', 400, 'ISBN-005', 24.99)]
+    const book_list = [new Libro(1, 'Libro 1', 'Autor 1', 'ISBN-001', 29.99, 'genero1', 'sinopsis1', 'foto1'),
+        new Libro(2, 'Libro 2', 'Autor 2', 'ISBN-002', 39.99, 'genero2', 'sinopsis2', 'foto2'),
+        new Libro(3, 'Libro 3', 'Autor 3', 'ISBN-003', 19.99, 'genero3', 'sinopsis3', 'foto3'),
+        new Libro(4, 'Libro 4', 'Autor 4', 'ISBN-004', 49.99, 'genero4', 'sinopsis4', 'foto4'),
+        new Libro(5, 'Libro 5', 'Autor 5', 'ISBN-005', 24.99, 'genero5', 'sinopsis5', 'foto5')]
 
     const [libros, setLibros] = useState<Libro[]>(book_list);
     const {isOpen, onOpen, onClose} = useDisclose();
     const [selectedLibro, setSelectedLibro] = useState<Libro | null>(null);
 
     const handleCrearLibro = () => {
-        // Aquí tendrás que implementar la logica para la creación del libro
+        // Navaegar a pantalla crear libro
     };
 
     const handleBorrarLibro = (libro: Libro) => {
