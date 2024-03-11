@@ -1,82 +1,70 @@
-import {Box, Heading, AspectRatio, Image, Text, HStack, Stack, Button} from "native-base";
-import {Libro} from "../model/libro_model";
+import { ScrollView, StyleSheet, View } from "react-native";
+import { Libro } from "../model/libro_model";
+import { Button, Card, Icon, Text } from "@rneui/themed";
+import { CardTitle } from "@rneui/base/dist/Card/Card.Title";
+import { CardDivider } from "@rneui/base/dist/Card/Card.Divider";
+import { CardImage } from "@rneui/base/dist/Card/Card.Image";
 
-const BookDetail = ({route, navigation}) => {
-    const {selectedLibro} = route.params;
-    const {titulo, autor, sinopsis, genero, ISBN, precio} = selectedLibro;
-    console.log(selectedLibro)
-    console.log(route.params)
+const BookDetail = ({ route, navigation }) => {
+  const { selectedLibro } = route.params;
+  const { titulo, autor, sinopsis, genero, ISBN, precio, url_foto } =
+    selectedLibro;
+  console.log(selectedLibro);
+  console.log(route.params);
 
-    const handleBorrarLibro = (libro) => {
-        // Implementar la lógica para borrar el libro aquí
-    };
+  const handleBorrarLibro = (libro) => {
+    // Implementar la lógica para borrar el libro aquí
+  };
 
-    const handleEditarLibro = (libro) => {
-      navigation.navigate('Create', { creatingBook: false})
-    };
+  const handleEditarLibro = (libro) => {
+    navigation.navigate("Create", { creatingBook: false });
+  };
 
-    return (
-        <Box
-            alignItems="center"
-            my="10"
-        >
-            <Box maxWidth="80" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
-                borderColor: "coolGray.600",
-                backgroundColor: "gray.700"
-            }} _web={{
-                shadow: 2,
-                borderWidth: 0
-            }} _light={{
-                backgroundColor: "gray.50"
-            }}>
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <Card>
+          <View>
+            <CardTitle>Detalles</CardTitle>
+            <CardDivider />
+            <CardImage
+              style={{ padding: 0 }}
+              source={{
+                uri: url_foto,
+              }}
+            />
+            <Text style={{ marginBottom: 10 }}>{titulo}</Text>
+            <Text style={{ marginBottom: 10 }}>{autor}</Text>
+            <Text style={{ marginBottom: 10 }}>{sinopsis}</Text>
+            <Button
+              icon={
+                <Icon
+                  name="code"
+                  color="#ffffff"
+                  iconStyle={{ marginRight: 10 }}
+                />
+              }
+              buttonStyle={{
+                borderRadius: 0,
+                marginLeft: 0,
+                marginRight: 0,
+                marginBottom: 0,
+              }}
+              title="Editar"
+              onPress={() => navigation.navigate("Create")}
+            />
+            <Button>Borrar</Button>
+            </View>
+        </Card>
+      </View>
+    </ScrollView>
+  );
+};
 
-                <Box
-                    alignItems="center"
-                    marginX="10"
-                    height="60%">
-                    <AspectRatio w="100%" margin="5" ratio={9 / 11}>
-                        <Image source={{
-                            uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg"
-                        }} alt="image"/>
-                    </AspectRatio>
-                </Box>
+const styles = StyleSheet.create({
+  container: {
+    padding: 20
+  },
+});
 
-                <Stack p="4" space={3}>
-                    <Stack space={2}>
-                        <Heading size="md" ml={"-1"}>
-                            {titulo}
-                        </Heading>
-                        <Text fontWeight="300">
-                            {autor}
-                        </Text>
-                        <Text fontSize="xs" _light={{
-                            color: "violet.500"
-                        }} _dark={{
-                            color: "violet.400"
-                        }} fontWeight="500" ml="-0.5" mt="-1">
-                            ${precio}
-                        </Text>
-                    </Stack>
-
-                    <Text fontWeight="400">
-                        {sinopsis}
-                    </Text>
-                    <HStack alignItems="center" space={4} justifyContent="space-between">
-                        <HStack alignItems="center">
-                            <Text color="coolGray.600" _dark={{
-                                color: "warmGray.200"
-                            }} fontWeight="400">
-                            </Text>
-                        </HStack>
-                    </HStack>
-                </Stack>
-            </Box>
-            <HStack>
-                <Button onPress={() => navigation.navigate("Create")}>Editar</Button>
-                <Button>Borrar</Button>
-            </HStack>
-        </Box>
-    )
-}
-
-export default BookDetail
+export default BookDetail;

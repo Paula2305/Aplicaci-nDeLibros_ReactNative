@@ -14,7 +14,7 @@ const Home = ({ navigation }) => {
     const [libros, setLibros] = useState(book_list);
 
     const handleCrearLibro = () => {
-        navigation.navigate('Create', { creatingBook: true})
+        navigation.navigate('Create')
     };
 
     const handleLibroClick = (libro) => {

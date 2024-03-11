@@ -1,36 +1,49 @@
-import {Box, Text, HStack} from 'native-base';
 import React from "react";
-import {TouchableOpacity} from "react-native";
+import { CardTitle } from '@rneui/base/dist/Card/Card.Title';
+import { Card, Image } from '@rneui/themed';
+import {StyleSheet, TouchableOpacity, View} from "react-native";
 
 const LibroCard = ({libro, onPress}) => {
     return (
         <TouchableOpacity onPress={onPress}>
-            <Box
-                bg={'white'}
-                shadow={1}
-                rounded={'lg'}
-                maxWidth={'90%'}
-                mx={'auto'}
-                my={3}
-                py={4}
-                px={5}
-            >
-                <HStack space={2} alignItems={'center'}>
-                    <Box>
-                        <Text fontSize='md' fontWeight='bold' mb={2}>
+            <View style={styles.container}>
+                <Card>
+                    <View style={styles.card}>
+                        <Image
+                            style= {styles.image}
+                            source={{uri: libro.url_foto}}
+                        />
+                        <CardTitle style = {styles.titulo}>
                             {libro.titulo}
-                        </Text>
-                        <Text fontSize='sm' color='gray.500'>
-                            Autor: {libro.autor}
-                        </Text>
-                        <Text fontSize='sm' color='green.500' mt={2}>
-                            Precio: ${libro.precio}
-                        </Text>
-                    </Box>
-                </HStack>
-            </Box>
+                        </CardTitle>
+                        <CardTitle>
+                            {libro.autor}
+                        </CardTitle>
+                    </View>
+
+                </Card>
+            </View>
         </TouchableOpacity>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10
+    },
+    card: {
+        width: 80,
+        height: 200,
+        padding: 5
+    },
+    image: {
+        width: 50,
+        height: 100
+    },
+    titulo: {
+        fontSize: 10,
+        fontWeight: "bold"
+    }
+});
 
 export default LibroCard;
