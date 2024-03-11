@@ -1,6 +1,5 @@
 import React from 'react';
-import { withExpoSnack } from 'nativewind';
-import { NavigationContainer, NavigationContainerProps } from '@react-navigation/native';
+import { NavigationContainer} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from "./screens/Home";
 import BookDetail from "./screens/BookDetail";

@@ -7,11 +7,11 @@ const BookDetail = ({route, navigation}) => {
     console.log(selectedLibro)
     console.log(route.params)
 
-    const handleBorrarLibro = (libro: Libro) => {
+    const handleBorrarLibro = (libro) => {
         // Implementar la lógica para borrar el libro aquí
     };
 
-    const handleEditarLibro = (libro: Libro) => {
+    const handleEditarLibro = (libro) => {
       navigation.navigate('Create', { creatingBook: false})
     };
 
