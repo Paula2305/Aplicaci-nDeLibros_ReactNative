@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Button, ScrollView, View} from 'react-native';
+import {ScrollView, View,StyleSheet} from 'react-native';
 import LibroCard from "../components/LibroCard";
 import {Libro} from "../model/libro_model";
+import { Button } from '@rneui/themed';
 
 
 const Home = ({ navigation }) => {
@@ -26,15 +27,40 @@ const Home = ({ navigation }) => {
             <ScrollView
                 horizontal = {true}
                 style = {{
-                    flexDirection: 'row'
+                    flexDirection: 'row',
+                    height: 300
                 }}>
                 {libros.map((libro) => (
                     <LibroCard key={libro.id} libro={libro} onPress={() => handleLibroClick(libro)}/>
                 ))}
-                <Button title="Crear Libro" onPress={handleCrearLibro}/>
             </ScrollView>
+            <ScrollView
+                horizontal = {true}
+                style = {{
+                    flexDirection: 'row',
+                    height: 280
+                }}>
+                {libros.map((libro) => (
+                    <LibroCard key={libro.id} libro={libro} onPress={() => handleLibroClick(libro)}/>
+                ))}
+            </ScrollView>
+            <View style={styles.container}>
+                <Button
+                    style={styles.button}
+                    title="Crear Libro"
+                    onPress={handleCrearLibro}/>
+            </View>
         </ScrollView>
     );
 };
 
+const styles = StyleSheet.create({
+    container: {
+        alignItems: "center"
+    },
+    button: {
+        width: 150,
+        height: 50
+    }
+})
 export default Home;

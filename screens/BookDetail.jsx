@@ -28,14 +28,14 @@ const BookDetail = ({ route, navigation }) => {
             <CardTitle>Detalles</CardTitle>
             <CardDivider />
             <CardImage
-              style={{ padding: 0 }}
+              style={styles.image}
               source={{
                 uri: url_foto,
               }}
             />
-            <Text style={{ marginBottom: 10 }}>{titulo}</Text>
-            <Text style={{ marginBottom: 10 }}>{autor}</Text>
-            <Text style={{ marginBottom: 10 }}>{sinopsis}</Text>
+            <Text style={styles.text}>{titulo}</Text>
+            <Text style={styles.text}>{autor}</Text>
+            <Text style={styles.text}>{sinopsis}</Text>
             <Button
               icon={
                 <Icon
@@ -63,8 +63,16 @@ const BookDetail = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20
+    padding: 20,
+    alignItems: "center"
   },
+  text: {
+    marginBottom: 10
+  },
+  image: {
+    width: 200,
+    height: 300
+  }
 });
 
 export default BookDetail;
