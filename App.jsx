@@ -5,7 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from "./screens/Home";
 import BookDetail from "./screens/BookDetail";
 import BookForm from "./screens/BookForm";
-import { Icon } from '@rneui/themed';
+import Search from "./screens/Search"
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -18,10 +19,11 @@ function HomeStack() {
             headerShown: false
           }}>
             <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="Details" component={BookDetail} />
+            <Stack.Screen name="Details" component={BookDetail}/>
+            <Stack.Screen name="Search" component={Search}/>
         </Stack.Navigator>
     );
-}
+};
 
 function App() {
     return (
@@ -38,19 +40,19 @@ function App() {
                         }
 
                         // Retorna el componente Icon de React Native Elements con el nombre del icono y el color
-                        return <Icon name={iconName} color={color} size={size} />;
+                        return <Ionicons name={iconName} color={color} size={size} />;
                     },
                 })}
                 tabBarOptions={{
-                    activeTintColor: 'tomato', // Color de la pestaña activa
-                    inactiveTintColor: 'gray', // Color de la pestaña inactiva
+                    activeTintColor: '#00b4d8', 
+                    inactiveTintColor: 'gray',
                 }}
             >
                 <Tab.Screen name="Home" component={HomeStack}/>
-
+                <Tab.Screen name="Search" component={Search}/>
             </Tab.Navigator>
         </NavigationContainer>
     );
-}
+};
 
 export default App;
